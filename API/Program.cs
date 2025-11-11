@@ -5,6 +5,21 @@ using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
+builder.WebHost.ConfigureKestrel(serverOptions =>
+{
+    serverOptions.Listen(
+        System.Net.IPAddress.Loopback, 5001,
+        listenOptions =>
+        {
+            listenOptions.UseHttps(
+                "/home/terrence/demo/skinet/client/ssl/localhost+1.p12",
+                "changeit"
+            );
+        }
+
+    );
+});
+
 // Add services to the container.
 
 builder.Services.AddControllers();
