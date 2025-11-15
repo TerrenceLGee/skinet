@@ -21,10 +21,12 @@
                 <dt class="font-medium text-gray-900">{{cartService.totals()?.total | currency}}</dt>
             </dl>
         </div>
-        <div class="flex flex-col gap-2">
+        @if (location.path() !== '/checkout') {
+          <div class="flex flex-col gap-2">
             <button routerLink="/checkout" mat-flat-button class="bg-purple-700">Checkout</button>
             <button routerLink="/shop" mat-button class="text-purple-700">Continue Shopping</button>
-        </div>
+          </div>
+        }
     </div>
     <div class="space-y-4 rounded-lg border border-gray-200 bg-white shadow-sm">
         <form class="space-y-2 flex flex-col p-2">
@@ -32,7 +34,7 @@
                 Do you have a voucher code?
             </label>
             <mat-form-field appearance="outline">
-                <mat-label>Voucer code</mat-label>
+                <mat-label>Voucher code</mat-label>
                 <input type="text" matInput>
             </mat-form-field>
             <button mat-flat-button class="bg-purple-700">Apply code</button>
