@@ -12,6 +12,8 @@ public class BaseSpecification<T>(Expression<Func<T, bool>>? criteria) : ISpecif
     public Expression<Func<T, object>>? OrderBy { get; private set; }
 
     public Expression<Func<T, object>>? OrderByDescending { get; set; }
+    public List<Expression<Func<T, object>>> Includes { get; } = [];
+    public List<string> IncludeStrings { get; } = [];
 
     public bool IsDistinct { get; private set; }
 
@@ -31,6 +33,15 @@ public class BaseSpecification<T>(Expression<Func<T, bool>>? criteria) : ISpecif
         return query;
     }
 
+    protected void AddInclude(Expression<Func<T, object>> includeExpression)
+    {
+        Includes.Add(includeExpression);
+    }
+
+    protected void AddInclude(string includeString)
+    {
+        IncludeStrings.Add(includeString);
+    }
     protected void AddOrderBy(Expression<Func<T, object>> orderByExpression)
     {
         OrderBy = orderByExpression;

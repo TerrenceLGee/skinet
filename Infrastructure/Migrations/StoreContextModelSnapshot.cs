@@ -423,10 +423,10 @@ namespace Infrastructure.Migrations
                             b1.Property<int>("ExpMonth")
                                 .HasColumnType("int");
 
-                            b1.Property<int>("Last4")
+                            b1.Property<int>("ExpYear")
                                 .HasColumnType("int");
 
-                            b1.Property<int>("Year")
+                            b1.Property<int>("Last4")
                                 .HasColumnType("int");
 
                             b1.HasKey("OrderId");
